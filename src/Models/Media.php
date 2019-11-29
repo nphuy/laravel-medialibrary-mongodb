@@ -22,7 +22,9 @@ use Spatie\MediaLibrary\Models\Traits\CustomMediaProperties;
 use Spatie\MediaLibrary\ResponsiveImages\RegisteredResponsiveImages;
 use Spatie\MediaLibrary\UrlGenerator\UrlGeneratorFactory;
 
-class Media extends Model implements Responsable, Htmlable
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+
+class Media extends Eloquent implements Responsable, Htmlable
 {
     use IsSorted,
         CustomMediaProperties;
@@ -31,11 +33,11 @@ class Media extends Model implements Responsable, Htmlable
 
     protected $guarded = [];
 
-    protected $casts = [
-        'manipulations' => 'array',
-        'custom_properties' => 'array',
-        'responsive_images' => 'array',
-    ];
+    // protected $casts = [
+    //     'manipulations' => 'array',
+    //     'custom_properties' => 'array',
+    //     'responsive_images' => 'array',
+    // ];
 
     public function model(): MorphTo
     {
