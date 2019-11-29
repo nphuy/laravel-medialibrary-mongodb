@@ -28,7 +28,7 @@ class MediaObserver
             return;
         }
 
-        if ($media->manipulations !== json_decode($media->getOriginal('manipulations'), true)) {
+        if ($media->manipulations !== $media->getOriginal('manipulations')) {
             $eventDispatcher = Media::getEventDispatcher();
             Media::unsetEventDispatcher();
 
